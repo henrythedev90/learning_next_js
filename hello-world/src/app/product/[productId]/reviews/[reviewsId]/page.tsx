@@ -1,12 +1,19 @@
+import {notFound} from "next/navigation"
 export default function ReviewsDetail({params}:{
     params :{
         productId: string,
-        reviewId: string
+        reviewsId: string
     }
 }){
-    return(
-        <h1>
-            Review {params.reviewId} for product {params.productId}
-        </h1>
-    )
+    if(parseInt(params.reviewsId) > 1000){
+        notFound()
+    }
+    if(params.productId){
+        console.log({params})
+        return(
+            <h1>
+                Review {params.reviewsId} for product {params.productId}
+            </h1>
+        )
+    }
 }
